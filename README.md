@@ -1,4 +1,4 @@
-# wordgame
+# Word Game cs111 personal project
 Word Game using Django
 
 This game is in a VERY early stage with little to no logic added.
