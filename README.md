@@ -3,7 +3,10 @@ Word Game using Django
 
 This game is in a VERY early stage with little to no logic added.
 
-Recent changes include the addition of an ajax statement that checks if the inputed word is an english word or not.
+Recent changes:
+
+- Addition of an ajax statement that checks if the inputed word is an english word or not.
+- Functionality of the Django database which takes inputs of the word, whether it's vaild or not, and the point total for the new word.
 
 The letter buttons are generated using the functions in wordgame.py
 
