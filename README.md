@@ -11,3 +11,10 @@ Recent changes:
 The letter buttons are generated using the functions in wordgame.py
 
 My next plan is to introduce logic similar to the game boggle in limitations to how you are able to construct your words as well as minor visual updates!
+
+
+Screenshots:
+
+![gameplay](https://i.imgur.com/QwNQ9K9.png)
+![database](https://i.imgur.com/W8PHcjV.png)
+![data](https://i.imgur.com/Qe5dmaJ.png)
