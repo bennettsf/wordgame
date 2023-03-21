@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  
+
+
+  <style>
+
+    .container {
+      max-width: 490px;
+    }
+
+    .button {
+      position: relative;
+      box-shadow: 0 5px 3px #222;
+      transition:
+          box-shadow 0.3s ease,
+          transform 0.3s ease;
+      appearance: none;
+      ms-appearance: none;
+      moz-appearance: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      width: 90px;
+      height: 90px;
+      background-color: #0E8388;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 35px;
+      font-weight: bold;
+      color: #CBE4DE;
+      user-select: none;
+      opacity: 0.8;
+
+    }
+
+    .button:hover {
+      opacity:1;
+      box-shadow: 0 15px 7px -7px #222;
+      transform: translateY(-5px);
+    }
+
+
+    button#submit_word {
+
+      width: 200px;
+      height: 60px;
+    }
+
+    button#new-game {
+      width: 225px;
+      height: 60px;
+    }
+
+    button#reset {
+      margin: 0 auto;
+      margin-left: 20px;
+      width: 150px;
+      height: 60px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      gap: 10px;
+      width: 490px;
+      position: relative;
+    }
+
+    .score-list {
+      position: absolute;
+      width: 300px;
+      height: 400px;
+      margin-top: 35px;
+      margin-bottom: 35px;
+      left: 525px;
+      {% comment %} background: tan; {% endcomment %}
+
+    }
+
+    body {
+      background: #2C3333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Varela Round', sans-serif;
+    }
+
+    .answer {
+      display: grid;
+      justify-content: center;
+      clear: both;
+      margin: 20px;
+      height: 102px;
+  }
+
+    .point_value {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      padding: 7px;
+      font-size: 14px;
+    }
+
+    h2#output {
+      color: #CBE4DE;
+      font-size: 50px;
+      letter-spacing: 5px;
+      height: 60px;
+      margin: 0 auto;
+    }
+
+    .score-list {
+      color: #CBE4DE;
+    }
+
+    h3 {
+      color: #CBE4DE;
+      font-size: 35px;
+      margin: 0 auto;
+      margin-top: 5px;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    .submit {
+      text-align: center;
+    }
+
+    .new-game {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    
+
+   </style>
+<head>
+</head>
+
+<body>
+  <div class="container">
+    <div class="button-and-score-list">
+    <div id="buttonContainer" class="grid">
+
+      {% for key, letter, value in letter_value %}
+
+      <div class="btn">
+        
+        <button id="button-{{ key }} "value="{{ letter }}" class="button" onclick="output_func(this)">
+          {{ letter }}
+
+          <span id="point-{{ key }}" class="point_value" value="{{ value }}">{{ value }}</span>
+        </button>
+        
+      </div>
+      {% endfor %}
+
+
+      <div class="score-list" id="score-list">
+        <h3 id="total-score">Score : </h3>
+
+      </div>
+    </div>
+
+    
+  </div>
+    <div class="answer">
+      <h2 id="output"></h2>
+      <h3 id="current-point-value"></h3>
+    </div>
+    <div class="submit">
+      
+        <button class="button" method="POST" type="submit" id="submit_word" onclick="">Submit .</button>
+        <button class="button" type="submit" id="reset" onclick="reset()">Reset .</button>
+    </div>
+    <div class="new-game">
+      <button class="button" type="submit" id="new-game" onclick="new_game()">New Game .</button>
+    </div>
+    
+  </div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script language="JavaScript" href="./wordgame.js">
+
+  var output_word = document.getElementById("output");
+  var output_value = document.getElementById("current-point-value");
+  var total_score_text = document.getElementById("total-score");
+  var total_word_value = 0;
+  var total_score = 0;
+  
+  function output_func(elem) {
+      var letter_value = elem.value;
+      var point_value = elem.children[0];
+      var point = parseInt(point_value.innerHTML);
+      total_word_value += point;
+      output_word.innerHTML += letter_value.toUpperCase();
+      output_value.innerHTML = total_word_value;
+      
+  }
+    
+  function submit(){
+    //word = output_word.innerHTML;
+    total_score += total_word_value;
+    console.log(total_score);
+    total_score_text.innerHTML = 'Score : ' + total_score.toString();
+
+    //check if word is real placeholder
+    //if it's valid, add to score and place word in list that contains (word - word score)
+  }
+  
+  
+  function reset() {
+      total_word_value = 0;
+      output_word.innerHTML = '';
+      output_value.innerHTML = '';
+    }
+    
+    function new_game() {
+      reset();
+      total_score = 0;
+      total_score_text.innerHTML = 'Score : ' 
+    }
+    
+  // Use the value of the input element
+  // console.log("The value of the input element is: " + letter_value);
+
+$(document).ready(function() {
+  $('#submit_word').click(function(event) {
+      event.preventDefault();
+      var word = $("#output").text();
+      var word_points = $("#current-point-value").text();
+      $.ajax({
+          url: {% url 'fetch_word' %}, //not sure
+          type: 'POST',
+          dataType: 'json',
+          data: {
+             word:word,
+             word_points:word_points,
+             csrfmiddlewaretoken: "{{ csrf_token }}",
+            },
+          success: function(data) {
+              console.log(data);
+            
+            if (data['isValid'] == true){
+                var newValidWord = $("<h2>").html(data['word'] + " - " + data['word_points']);
+                $("#score-list").append(newValidWord);
+                submit();
+                reset();
+            } else {
+              reset();
+            }
+              /* var word_result = JSON.parse(data.result);
+              
+              submit();
+              
+              reset(); */
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status);
+            console.log(xhr.responseText);
+            console.log(thrownError);
+        }
+          }
+      );
+  });
+});
+
+
+
+
+</script>
+</body>
+
+</html>
+
