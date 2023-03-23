@@ -12,6 +12,7 @@ The letter buttons are generated using the functions in wordgame.py
 
 My next plan is to introduce logic (similar to the game boggle) with limitations to how you are able to construct your words as well as minor visual updates!
 
+Create disctionary of already found words. Check if next word has already been found.
 
 Screenshots:
 
