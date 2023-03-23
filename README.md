@@ -10,7 +10,7 @@ Recent changes:
 
 The letter buttons are generated using the functions in wordgame.py
 
-My next plan is to introduce logic (similar to the game boggle) which limitations to how you are able to construct your words as well as minor visual updates!
+My next plan is to introduce logic (similar to the game boggle) with limitations to how you are able to construct your words as well as minor visual updates!
 
 
 Screenshots:
