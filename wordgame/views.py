@@ -38,5 +38,3 @@ def fetch_word(request):
 def pull_valid_words():
     c = NewWord.objects.filter(isValid=True)
     print(c)
-
-pull_valid_words()
