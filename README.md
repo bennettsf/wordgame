@@ -1,8 +1,6 @@
 # Word Game CS111 Personal Project
 Word Game using Django
 
-This game is in a VERY early stage with little functionality.
-
 Recent changes:
 
 - Addition of an ajax statement that checks if the inputed word is an english word or not.
