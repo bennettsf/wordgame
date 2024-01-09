@@ -14,6 +14,6 @@ Create dictionary of already found words. Check if next word has already been fo
 
 Screenshots:
 
-![gameplay](https://i.imgur.com/QwNQ9K9.png)
+![gameplay](https://i.imgur.com/qUXQ2eI.png)
 ![database](https://i.imgur.com/W8PHcjV.png)
 ![data](https://i.imgur.com/Qe5dmaJ.png)
